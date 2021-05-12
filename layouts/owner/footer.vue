@@ -1,29 +1,56 @@
 <template>
-  <v-container fluid pa-0 class="notoSansFont">
-    <v-row no-gutters align="center" class="content fz18 text-light2" style="height: 108px;">
-      <v-spacer></v-spacer>
-      <v-col cols="auto mr32">
-        &copy; {{ new Date().getFullYear() }} PangGo, Inc. All rights reserved
+  <v-container fluid pa-0>
+    <v-row
+      no-gutters
+      justify="end"
+      align="center"
+      class="footer-area"
+      :style="{ color: [dayMode ? 'var(--grey-9)' : 'var(--grey-4)'] }"
+    >
+      <v-col cols="auto">
+        &copy; {{ new Date().getFullYear() }} Pig95team, Inc. All rights reserved
       </v-col>
-      <v-col cols="auto mr32"> 개인정보 처리방침 </v-col>
-      <v-col cols="auto mr32"> 이용 약관 </v-col>
-      <v-col cols="auto"> 사이트맵 </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-export default {};
+import { mapGetters } from 'vuex';
+
+export default {
+  computed: {
+    ...mapGetters(['dayMode']),
+  },
+};
 </script>
 
 <style scoped>
-.notoSansFont {
-  font-family: 'Noto Sans KR', sans-serif;
-}
 .container {
-  border-top: solid 1px var(--light3);
+  font: 14px 'Spoqa Han Sans Neo', sans-serif;
 }
-.content {
-  margin: 0 18.3%;
+
+.footer-area {
+  margin: 0 auto;
+}
+
+@media all and (min-width: 1264px) {
+  .footer-area {
+    max-width: 1200px;
+    height: 124px;
+  }
+}
+
+@media all and (min-width: 600px) and (max-width: 1263px) {
+  .footer-area {
+    max-width: 770px;
+    height: 92px;
+  }
+}
+
+@media all and (max-width: 599px) {
+  .footer-area {
+    max-width: 562px;
+    height: 92px;
+  }
 }
 </style>
